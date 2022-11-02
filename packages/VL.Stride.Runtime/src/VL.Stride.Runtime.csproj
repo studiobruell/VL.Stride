@@ -21,6 +21,22 @@
   </ItemGroup>
   
   <ItemGroup>
+    <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\*.cs" Link="Atmosphere\%(RecursiveDir)%(Filename)%(Extension)">
+    </None>
+    <Compile Include="..\..\TR.Stride\TR.Stride.Atmosphere\*.cs" Link="Atmosphere\%(RecursiveDir)%(Filename)%(Extension)">
+    </Compile>
+      
+    <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.sdsl" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
+    </None>
+      
+    <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.cs" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
+    </None>
+      
+    <Compile Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.cs" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
     <!-- A pure package dependency so on install all VL packages come in -->
     <PackageReference Include="Stride.Core" />
     <PackageReference Include="Stride.Core.Yaml" />
@@ -49,9 +65,6 @@
   <ItemGroup Condition="'$(InPrivateRepo)' != 'true'">
     <PackageReference Include="VL.Core" />
     <PackageReference Include="VL.CoreLib" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\TR.Stride\TR.Stride.Atmosphere\TR.Stride.Atmosphere.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="vvvv.geometry3Sharp">

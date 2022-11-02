@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VL.Stride.DefaultAssets", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VL.Stride", "VL.Stride\src\VL.Stride.csproj", "{0845B9A3-4836-413C-8280-EDAC8227ED7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TR.Stride.Atmosphere", "TR.Stride\TR.Stride.Atmosphere\TR.Stride.Atmosphere.csproj", "{42E00487-4A01-4395-A912-9E55BE731D26}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,12 +58,6 @@ Global
 		{0845B9A3-4836-413C-8280-EDAC8227ED7F}.Packages|Any CPU.Build.0 = Packages|Any CPU
 		{0845B9A3-4836-413C-8280-EDAC8227ED7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0845B9A3-4836-413C-8280-EDAC8227ED7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42E00487-4A01-4395-A912-9E55BE731D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42E00487-4A01-4395-A912-9E55BE731D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42E00487-4A01-4395-A912-9E55BE731D26}.Packages|Any CPU.ActiveCfg = Packages|Any CPU
-		{42E00487-4A01-4395-A912-9E55BE731D26}.Packages|Any CPU.Build.0 = Packages|Any CPU
-		{42E00487-4A01-4395-A912-9E55BE731D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42E00487-4A01-4395-A912-9E55BE731D26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

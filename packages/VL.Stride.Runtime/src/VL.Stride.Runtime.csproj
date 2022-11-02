@@ -51,6 +51,9 @@
     <PackageReference Include="VL.CoreLib" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\stride\TR.Stride\TR.Stride.Atmosphere\TR.Stride.Atmosphere.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="vvvv.geometry3Sharp">
       <HintPath>..\dependencies\vvvv.geometry3Sharp.dll</HintPath>
     </Reference>
@@ -69,6 +72,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Effects\Common\ColorUtilityTemp.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Common\ConstantTexture.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Common\InstanceWorldBuffer.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Common\MaterialExtension.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Common\ShaderUtils.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Common\TextureUtils.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Common\VertexIDStream.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ComputeFX\ComputeFXGraph.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\Demos\DrawParticles.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
@@ -84,10 +111,58 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Effects\HappyLibs\HappyCalc.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\HappyLibs\HappyRaymarch.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\HappyLibs\HappySDF.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\AzureKinect\ReconstructPointCloud.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\DeclBufferFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\DeclRWBufferFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\GetItemBufferFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\GetItemRWBufferFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\GetItemRWBufferFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\SetItemRWBufferFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\SetItemRWBufferFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Buffer\SetItemRWBufferFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ComputeValue\ComputeBool.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ComputeValue\ComputeFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ComputeValue\ComputeFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ComputeValue\ComputeInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ComputeValue\ComputeInt2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ComputeValue\ComputeMatrix.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\ShaderFX\ComputeValue\ComputeTexture2D.sdsl.cs">
@@ -96,13 +171,285 @@
     <Compile Update="Effects\ShaderFX\ComputeValue\ComputeTexture2DArray.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Effects\ShaderFX\Control\DoFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Control\DoFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Control\IfThenElse.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField2D\NoiseFloat2ToFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField2D\NoiseWorleyFastOverloadTest.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField2D\SDF2D.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\AddSDF.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\CombineSDF.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\DomainOpSF3D.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\IntersectSDF.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\JuliaSDF.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\NoiseFloat3ToFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\RaymarcherMatcap.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\SDF3D.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\ScalarField3D\UnionSDF.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\FieldTrip\VectorField3D\NoisePerlinFloat3ToFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Functions\Float2ToFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Functions\Float3ToFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Functions\FloatFloatToFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\DeclFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputBool.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputKeyMatrix.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputMatrix.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Input\InputUInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Join\JoinFloat4Float3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Conversion\ColorToFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Conversion\Float4ToColor.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Conversion\UIntToInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Distance\DistanceFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Divide\DivideFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Divide\DivideFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Divide\DivideInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Divide\DivideUInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Frac\FracFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Length\LengthFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Lerp\LerpFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Minus\MinusFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Multiply\MultiplyFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Multiply\MultiplyUInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Plus\PlusFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Plus\PlusInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\Plus\PlusUInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Operations\SmoothStep\SmoothStepFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\ShaderFXGraphEffect.sdfx.cs">
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Split\GetMemberFloat2Float4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Split\GetMemberFloat3Float.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Split\GetMemberFloat4Float2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Split\GetMemberFloat4Float3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\ShaderFX\TextureFXEffect.sdfx.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>%(Filename)</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\DeclTexture.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\LoadTextureFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\SampleCubicBSplineTextureFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\SampleCubicBSplineTextureFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\SampleCubicCatmullRomTextureFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\SampleCubicCatmullRomTextureFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Texture\SampleTextureFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\AssignSemanticFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\AssignVarBool.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\AssignVarFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\AssignVarFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\AssignVarFloat3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\AssignVarUInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetSemanticMatrix.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetVarBool.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetVarFloat.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetVarFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetVarFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetVarInt2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\GetVarUInt3.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\SemanticFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\SemanticMatrix.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\StreamVariableBool.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\StreamVariableFloat2.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\StreamVariableFloat4.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\StreamVariableMatrix.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\ShaderFX\Variable\StreamVariableUInt.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Blur\BlurPass3_Internal_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\Filters\Blur\Blur_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Blur\DirectionalBlur_Pass1_Internal_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Edge_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\HSCB_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Keying\ChannelKeying_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Keying\LumaKey_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Lomograph_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Metallica_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\NormalGlow_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Posterize\Posterize_HSL_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Posterize\Posterize_HSV_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Quantize_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\ColorManipulation\RampColor_TextureFX.sdsl.cs">
@@ -251,6 +598,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LevelsBase.sdsl</DependentUpon>
     </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\ShiftRGB_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\Threshold_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\ColorManipulation\TriColor_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Depth\LinearDepth_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\Filters\Distortion\Bump\BumpBase.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
@@ -258,6 +617,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\Distortion\Bump\Bump_Point_Internal_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Distortion\Bump_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\Distortion\Coordinates\CoordinatesBase.sdsl.cs">
@@ -270,6 +632,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\Distortion\Coordinates_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Distortion\PolarToCartesian_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\Distortion\Tunnels\TunnelsBase.sdsl.cs">
@@ -288,15 +653,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Tunnels_Square_Internal_TextureFX.sdsl</DependentUpon>
     </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Distortion\Tunnels_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\Filters\Distortion\UVOffset_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Glow\GlowPre_Internal_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\Glow\SimpleBloom_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Morphology\Erode_Color_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Patterns\Dots_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Patterns\Hatch_FromTexture_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Patterns\Hatch_Line_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Patterns\Kaleidoscope_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Patterns\Mosaic_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\Filters\Patterns\Pixelate_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
       <DependentUpon>Pixelate_TextureFX.sdsl</DependentUpon>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Filters\Patterns\Scanline_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Filters\Scanline_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
@@ -305,10 +697,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ComputeColorInverse.sdsl</DependentUpon>
     </Compile>
+    <Compile Update="Effects\TextureFX\Mixers\Blood_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Mixers\MixerTemplate_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\Mixers\Mix_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Effects\TextureFX\Sources\ColorPalette_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\Sources\Electricity_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Sources\Gradient_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Sources\Halo_Gradient_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Sources\Neurons_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Sources\Noise_Internal_TextureFX.sdsl.cs">
@@ -318,16 +728,48 @@
     <Compile Update="Effects\TextureFX\Sources\Stripes_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Effects\TextureFX\TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\TextureFX\TextureFXGraphEffect - Kopie.sdfx.cs">
       <DesignTime>True</DesignTime>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Utils\GetChannel_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Utils\LinearToSRgb_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Utils\SetAlpha_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Utils\SetChannel_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\TextureFX\Utils\SRgbToLinear_Precise_TextureFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\TextureFX\Utils\Swizzle_Internal_TextureFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Effects\Utils\CalcDispatchArgs.sdsl.cs">
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Utils\CalcDispatchArgs_ComputeFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Utils\MaterialError.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Effects\Utils\SuppressDiagonals_DrawFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Rendering\Images\AmbientOcclusionWithOrtho\AmbientOcclusionWithOrthoRawAOEffect.sdfx.cs">
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Rendering\Materials\FallbackMaterial\SceneEditorParameters.sdfx.cs">
       <DesignTime>True</DesignTime>
@@ -341,6 +783,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Update="Effects\ShaderFX\ShaderFXGraphEffect.sdfx">
+      <LastGenOutput>ShaderFXGraphEffect.sdfx.cs</LastGenOutput>
+    </None>
     <None Update="Effects\ShaderFX\TextureFXEffect.sdfx">
       <LastGenOutput>TextureFXEffect.sdfx.cs</LastGenOutput>
     </None>
@@ -367,6 +812,9 @@
     </None>
     <None Update="Effects\TextureFX\Utils\Swizzle_Internal_TextureFX.sdsl">
       <LastGenOutput>Swizzle_Internal_TextureFX.sdsl.cs</LastGenOutput>
+    </None>
+    <None Update="Rendering\Images\AmbientOcclusionWithOrtho\AmbientOcclusionWithOrthoRawAOEffect.sdfx">
+      <LastGenOutput>AmbientOcclusionWithOrthoRawAOEffect.sdfx.cs</LastGenOutput>
     </None>
     <None Update="Rendering\Materials\FallbackMaterial\SceneEditorParameters.sdfx">
       <LastGenOutput>SceneEditorParameters.sdfx.cs</LastGenOutput>

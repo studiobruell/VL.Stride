@@ -63,6 +63,7 @@ namespace VL.Stride.Core
                 return MaterialNodes.GetNodeDescriptions(nodeFactory)
                     .Concat(LightNodes.GetNodeDescriptions(nodeFactory))
                     .Concat(CompositingNodes.GetNodeDescriptions(nodeFactory))
+                    .Concat(AtmosphereNodes.GetNodeDescriptions(nodeFactory))
                     .Concat(RenderingNodes.GetNodeDescriptions(nodeFactory));
             });
 

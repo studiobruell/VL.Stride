@@ -13,8 +13,7 @@
   <!-- When building from within the public repo target the vvvv installation directly. This is a workaround as long as we can't handle Stride as a standalone package.  -->
   <PropertyGroup Condition="'$(Configuration)' != 'Packages' AND !$(InPrivateRepo)">
     <!-- Build directly into the vvvv installation -->
-    <OutputPath>$(VVVV_BinPath)lib\</OutputPath>
-    <VVVVExePath>$(VVVV_BinPath)vvvv.exe</VVVVExePath>
+    <OutputPath>..\..\..\..\..\vvvv\vvvv_gamma\</OutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <!-- Triggers stride asset compiler -->

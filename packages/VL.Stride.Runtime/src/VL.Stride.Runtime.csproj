@@ -28,6 +28,8 @@
       
     <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.sdsl" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
     </None>
+    <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.sdfx" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
+    </None>
       
     <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.cs" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
     </None>
@@ -890,6 +892,21 @@
     <Compile Update="Effects\Utils\SuppressDiagonals_DrawFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Effects\VLAtmosphereEffectMain.sdfx.cs">
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Effects\VLEffectMain - Kopie.sdfx.cs">
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Effects\VLEffectMain.sdfx.cs">
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Rendering\Images\AmbientOcclusionWithOrtho\AmbientOcclusionWithOrthoRawAOEffect.sdfx.cs">
       <DesignTime>True</DesignTime>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -936,6 +953,15 @@
     </None>
     <None Update="Effects\TextureFX\Utils\Swizzle_Internal_TextureFX.sdsl">
       <LastGenOutput>Swizzle_Internal_TextureFX.sdsl.cs</LastGenOutput>
+    </None>
+    <None Update="Effects\VLAtmosphereEffectMain.sdfx">
+      <LastGenOutput>VLAtmosphereEffectMain.sdfx.cs</LastGenOutput>
+    </None>
+    <None Update="Effects\VLEffectMain - Kopie.sdfx">
+      <LastGenOutput>VLEffectMain - Kopie.sdfx.cs</LastGenOutput>
+    </None>
+    <None Update="Effects\VLEffectMain.sdfx">
+      <LastGenOutput>VLEffectMain.sdfx.cs</LastGenOutput>
     </None>
     <None Update="Rendering\Images\AmbientOcclusionWithOrtho\AmbientOcclusionWithOrthoRawAOEffect.sdfx">
       <LastGenOutput>AmbientOcclusionWithOrthoRawAOEffect.sdfx.cs</LastGenOutput>

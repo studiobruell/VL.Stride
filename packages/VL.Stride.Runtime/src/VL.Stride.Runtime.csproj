@@ -20,7 +20,7 @@
     <None Include="..\help\**\*" Link="help\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" AutoGen="false" PackagePath="help\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
   
-  <ItemGroup>
+  <!--<ItemGroup>
     <None Include="..\..\TR.Stride\TR.Stride.Atmosphere\*.cs" Link="Atmosphere\%(RecursiveDir)%(Filename)%(Extension)">
     </None>
     <Compile Include="..\..\TR.Stride\TR.Stride.Atmosphere\*.cs" Link="Atmosphere\%(RecursiveDir)%(Filename)%(Extension)">
@@ -36,7 +36,7 @@
       
     <Compile Include="..\..\TR.Stride\TR.Stride.Atmosphere\Effects\*.cs" Link="Atmosphere\Effects\%(RecursiveDir)%(Filename)%(Extension)">
     </Compile>
-  </ItemGroup>
+  </ItemGroup>-->
   
   <ItemGroup>
     <!-- A pure package dependency so on install all VL packages come in -->
@@ -67,6 +67,9 @@
   <ItemGroup Condition="'$(InPrivateRepo)' != 'true'">
     <PackageReference Include="VL.Core" />
     <PackageReference Include="VL.CoreLib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TR.Stride\TR.Stride.Atmosphere\TR.Stride.Atmosphere.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="vvvv.geometry3Sharp">

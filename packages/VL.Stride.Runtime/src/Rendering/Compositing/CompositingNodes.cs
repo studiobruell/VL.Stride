@@ -312,6 +312,9 @@ namespace VL.Stride.Rendering.Compositing
             yield return nodeFactory.NewNode<ShadowMapRenderer>(category: shadowsCategory)
                 .AddCachedListInput(nameof(ShadowMapRenderer.Renderers), x => x.Renderers);
 
+            yield return nodeFactory.NewNode<VLShadowMapRenderer>(category: shadowsCategory)
+                .AddCachedListInput(nameof(VLShadowMapRenderer.Renderers), x => x.Renderers);
+
             yield return new StrideNodeDesc<LightDirectionalShadowMapRenderer>(nodeFactory, category: shadowsCategory);
             yield return new StrideNodeDesc<LightSpotShadowMapRenderer>(nodeFactory, category: shadowsCategory);
             yield return new StrideNodeDesc<LightPointShadowMapRendererParaboloid>(nodeFactory, category: shadowsCategory);

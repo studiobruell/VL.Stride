@@ -46,12 +46,12 @@ namespace VL.Stride
 
         public static Func<TInstance, TValue> BuildPropertyGetter<TInstance, TValue>(PropertyInfo member)
         {
-            return (Func<TInstance, TValue>)member.GetGetMethod().CreateDelegate(typeof(Func<TInstance, TValue>));
+            return (Func<TInstance, TValue>)member.GetGetMethod(true).CreateDelegate(typeof(Func<TInstance, TValue>));
         }
 
         public static Action<TInstance, TValue> BuildPropertySetter<TInstance, TValue>(PropertyInfo member)
         {
-            return (Action<TInstance, TValue>)member.GetSetMethod().CreateDelegate(typeof(Action<TInstance, TValue>));
+            return (Action<TInstance, TValue>)member.GetSetMethod(true).CreateDelegate(typeof(Action<TInstance, TValue>));
         }
 
         public static Func<TInstance, TValue> BuildFieldGetter<TInstance, TValue>(FieldInfo member)

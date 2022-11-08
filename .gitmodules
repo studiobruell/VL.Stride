@@ -4,6 +4,3 @@
 [submodule "packages-xenko/XenkoLiveEditor"]
 	path = packages-xenko/XenkoLiveEditor
 	url = https://github.com/tebjan/XenkoLiveEditor.git
-[submodule "TR.Stride"]
-	path = TR.Stride
-	url = https://github.com/tebjan/TR.Stride.git

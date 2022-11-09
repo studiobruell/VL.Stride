@@ -69,7 +69,8 @@
     <PackageReference Include="VL.CoreLib" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TR.Stride\TR.Stride.Atmosphere\TR.Stride.Atmosphere.csproj" />
+    <ProjectReference Include="..\..\..\TR.Stride\TR.Stride.Atmosphere\TR.Stride.Atmosphere.csproj" />
+    <ProjectReference Include="..\..\..\TR.Stride\TR.Stride.PostProcess\TR.Stride.PostProcess.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="vvvv.geometry3Sharp">

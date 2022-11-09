@@ -16,6 +16,7 @@ using Stride.Rendering.UI;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using TR.Stride.PostProcess;
 using VL.Core;
 using VL.Stride.Rendering.Images;
 
@@ -158,6 +159,7 @@ namespace VL.Stride.Rendering.Compositing
                 .AddCachedInput(nameof(VLForwardRenderer.Clear), x => x.Clear, (x, v) => x.Clear = v, defaultValue: null /* We want null as default */)
                 .AddCachedInput(nameof(VLForwardRenderer.OpaqueRenderStage), x => x.OpaqueRenderStage, (x, v) => x.OpaqueRenderStage = v)
                 .AddCachedInput(nameof(VLForwardRenderer.TransparentRenderStage), x => x.TransparentRenderStage, (x, v) => x.TransparentRenderStage = v)
+                .AddCachedInput(nameof(VLForwardRenderer.ResolvedRenderStage), x => x.ResolvedRenderStage, (x, v) => x.ResolvedRenderStage = v)
                 .AddCachedListInput(nameof(VLForwardRenderer.ShadowMapRenderStages), x => x.ShadowMapRenderStages)
                 .AddCachedInput(nameof(VLForwardRenderer.GBufferRenderStage), x => x.GBufferRenderStage, (x, v) => x.GBufferRenderStage = v)
                 .AddCachedInput(nameof(VLForwardRenderer.PostEffects), x => x.PostEffects, (x, v) => x.PostEffects = v)
@@ -251,6 +253,11 @@ namespace VL.Stride.Rendering.Compositing
             yield return new StrideNodeDesc<ToneMapLogarithmicOperator>(nodeFactory, "Logarithmic", category: operatorsCategory) { CopyOnWrite = false };
             yield return new StrideNodeDesc<ToneMapReinhardOperator>(nodeFactory, "Reinhard", category: operatorsCategory) { CopyOnWrite = false };
             yield return new StrideNodeDesc<ToneMapACESOperator>(nodeFactory, "ACES", category: operatorsCategory) { CopyOnWrite = false };
+
+            // custom postfx
+            yield return new StrideNodeDesc<CustomPostProcessingEffects>(nodeFactory, name: "HQPostEffects", category: postFxCategory);
+            yield return new StrideNodeDesc<BloomSettings>(nodeFactory, category: postFxCategory);
+            yield return new StrideNodeDesc<ExposureSettings>(nodeFactory, category: postFxCategory);
 
             // Root render features
             yield return nodeFactory.NewNode<MeshRenderFeature>(category: renderingCategoryAdvanced)

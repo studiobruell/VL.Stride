@@ -2552,6 +2552,42 @@
                 </ProcessDefinition>
               </Patch>
             </Node>
+            <!--
+
+    ************************ IndexBufferBinding ************************
+
+-->
+            <Node Name="IndexBufferBinding" Bounds="954,542" Id="Bi7yMgGKbDYMvGjfzggaz4">
+              <p:NodeReference>
+                <Choice Kind="ForwardDefinition" Name="Forward" />
+                <FullNameCategoryReference ID="Primitive" />
+              </p:NodeReference>
+              <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastSymbolSource="Stride.Graphics.dll">
+                <Choice Kind="TypeFlag" Name="IndexBufferBinding" />
+              </p:TypeAnnotation>
+              <Patch Id="J9NQkw6nO4bLsUzS2hQDUv">
+                <Canvas Id="VAmWYDPiBoUMMYpxtGVaSU" BordersChecked="false" CanvasType="Group" />
+                <ProcessDefinition Id="RFUx7Z8SDchMX0sgXv29xG" IsHidden="true" />
+              </Patch>
+            </Node>
+            <!--
+
+    ************************ VertexBufferBinding ************************
+
+-->
+            <Node Name="VertexBufferBinding" Bounds="955,594" Id="OlLVzGjxZ87LwMYDkVntoO">
+              <p:NodeReference>
+                <Choice Kind="ForwardDefinition" Name="Forward" />
+                <FullNameCategoryReference ID="Primitive" />
+              </p:NodeReference>
+              <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastSymbolSource="Stride.Graphics.dll">
+                <Choice Kind="TypeFlag" Name="VertexBufferBinding" />
+              </p:TypeAnnotation>
+              <Patch Id="ERTGChJqkVEMjdbMwwPbjG">
+                <Canvas Id="G3v4oTz2a4qPfmZXhlG1Go" BordersChecked="false" CanvasType="Group" />
+                <ProcessDefinition Id="ONHoErlTkmtObtJCHHF8kv" IsHidden="true" />
+              </Patch>
+            </Node>
           </Canvas>
           <Canvas Id="PDuAyb8RiadPbxsMoQOabd" Name="Rendering" Position="318,494">
             <Canvas Id="AkbF0dRVD1bMMVUiHm3YHC" Name="Images" Position="417,450">

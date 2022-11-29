@@ -271,6 +271,9 @@ namespace VL.Stride.Rendering.Compositing
             yield return nodeFactory.NewNode<SpriteRenderFeature>(category: renderingCategoryAdvanced)
                 .AddCachedListInput(nameof(SpriteRenderFeature.RenderStageSelectors), x => x.RenderStageSelectors);
 
+            yield return nodeFactory.NewNode<ParticleEmitterRenderFeature>(category: renderingCategoryAdvanced)
+                .AddCachedListInput(nameof(ParticleEmitterRenderFeature.RenderStageSelectors), x => x.RenderStageSelectors);
+
             yield return nodeFactory.NewNode<EntityRendererRenderFeature>(category: renderingCategoryAdvanced)
                 .AddCachedListInput(nameof(EntityRendererRenderFeature.RenderStageSelectors), x => x.RenderStageSelectors)
                 .AddCachedInput(nameof(EntityRendererRenderFeature.HelpersRenderStage), x => x.HelpersRenderStage, (x, v) => x.HelpersRenderStage = v)

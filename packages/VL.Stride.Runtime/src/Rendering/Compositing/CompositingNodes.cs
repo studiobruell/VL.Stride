@@ -255,7 +255,7 @@ namespace VL.Stride.Rendering.Compositing
             yield return new StrideNodeDesc<ToneMapACESOperator>(nodeFactory, "ACES", category: operatorsCategory) { CopyOnWrite = false };
 
             // custom postfx
-            yield return new StrideNodeDesc<CustomPostProcessingEffects>(nodeFactory, name: "HQPostEffects", category: postFxCategory);
+            yield return CreateCustomPostEffectsNode(nodeFactory, postFxCategory);
             yield return new StrideNodeDesc<BloomSettings>(nodeFactory, category: postFxCategory);
             yield return new StrideNodeDesc<ExposureSettings>(nodeFactory, category: postFxCategory);
 
@@ -332,7 +332,7 @@ namespace VL.Stride.Rendering.Compositing
 
             IVLNodeDescription CreatePostEffectsNode()
             {
-                return nodeFactory.NewNode<PostProcessingEffects>(name: "PostFXCore (Internal)", category: renderingCategory, copyOnWrite: false, 
+                return nodeFactory.NewNode<PostProcessingEffects>(name: "PostFXCore (Internal)", category: renderingCategory, copyOnWrite: false,
                     init: effects =>
                     {
                         ReplaceAO(effects); // set our own implementation, TODO: remove this once we use a stride version that has the ortho case included
@@ -522,6 +522,156 @@ namespace VL.Stride.Rendering.Compositing
                     ao.SetValue(effects, new AmbientOcclusionWithOrtho());
                 }
             }
+        }
+
+        private static CustomNodeDesc<CustomPostProcessingEffects> CreateCustomPostEffectsNode(IVLNodeDescriptionFactory nodeFactory, string postFxCategory)
+        {
+            return nodeFactory.NewNode<CustomPostProcessingEffects>(name: "HQPostEffects", category: postFxCategory, copyOnWrite: false,
+                    init: effects =>
+                    {
+                        //ReplaceAO(effects); // set our own implementation, TODO: remove this once we use a stride version that has the ortho case included
+                        // Can't use effects.DisableAll() - disables private effects used by AA
+                        effects.Fog.Enabled = false;
+                        //effects.Outline.Enabled = false;
+                        //effects.AmbientOcclusion.Enabled = false;
+                        //effects.LocalReflections.Enabled = false;
+                        effects.DepthOfField.Enabled = false;
+                        //effects.BrightFilter.Enabled = false;
+                        //effects.BloomSettings.Enabled = false;
+                        //effects.LightStreak.Enabled = false;
+                        //effects.LensFlare.Enabled = false;
+                        // ColorTransforms delegates to an empty list, keep it enabled
+                        //effects.ColorTransforms.Enabled = true;
+                        effects.Antialiasing.Enabled = false;
+                    })
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.AmbientOcclusion), x => x.AmbientOcclusion, (x, v) => x.AmbientOcclusion = v, defaultValue: null /* null is used to disable */)
+                    //.AddCachedInput(nameof(CustomPostProcessingEffects.LocalReflections), x => x.LocalReflections, (x, v) =>
+                    //{
+                    //    var s = x.LocalReflections;
+                    //    if (v != null)
+                    //    {
+                    //        s.Enabled = v.Enabled;
+                    //        s.DepthResolution = v.DepthResolution;
+                    //        s.RayTracePassResolution = v.RayTracePassResolution;
+                    //        s.MaxSteps = v.MaxSteps;
+                    //        s.BRDFBias = v.BRDFBias;
+                    //        s.GlossinessThreshold = v.GlossinessThreshold;
+                    //        s.WorldAntiSelfOcclusionBias = v.WorldAntiSelfOcclusionBias;
+                    //        s.ResolvePassResolution = v.ResolvePassResolution;
+                    //        s.ResolveSamples = v.ResolveSamples;
+                    //        s.ReduceHighlights = v.ReduceHighlights;
+                    //        s.EdgeFadeFactor = v.EdgeFadeFactor;
+                    //        s.UseColorBufferMips = v.UseColorBufferMips;
+                    //        s.TemporalEffect = v.TemporalEffect;
+                    //        s.TemporalScale = v.TemporalScale;
+                    //        s.TemporalResponse = v.TemporalResponse;
+                    //    }
+                    //    else
+                    //    {
+                    //        s.Enabled = false;
+                    //    }
+                    //}, defaultValue: null /* null is used to disable */)
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.DepthOfField), x => x.DepthOfField, (x, v) =>
+                    {
+                        var s = x.DepthOfField;
+                        if (v != null)
+                        {
+                            s.Enabled = v.Enabled;
+                            s.MaxBokehSize = v.MaxBokehSize;
+                            s.DOFAreas = v.DOFAreas;
+                            s.QualityPreset = v.QualityPreset;
+                            s.Technique = v.Technique;
+                            s.AutoFocus = v.AutoFocus;
+                        }
+                        else
+                        {
+                            s.Enabled = false;
+                        }
+                    }, defaultValue: null /* null is used to disable */)
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.Fog), x => x.Fog, (x, v) =>
+                    {
+                        var s = x.Fog;
+                        if (v != null)
+                        {
+                            s.Enabled = v.Enabled;
+                            s.Density = v.Density;
+                            s.Color = v.Color;
+                            s.FogStart = v.FogStart;
+                        }
+                        else
+                        {
+                            s.Enabled = false;
+                        }
+                    }, defaultValue: null /* null is used to disable */)
+                    //.AddCachedInput(nameof(CustomPostProcessingEffects.Outline), x => x.Outline, (x, v) =>
+                    //{
+                    //    var s = x.Outline;
+                    //    if (v != null)
+                    //    {
+                    //        s.Enabled = v.Enabled;
+                    //        s.NormalWeight = v.NormalWeight;
+                    //        s.DepthWeight = v.DepthWeight;
+                    //    }
+                    //    else
+                    //    {
+                    //        s.Enabled = false;
+                    //    }
+                    //}, defaultValue: null /* null is used to disable */)
+                    //.AddCachedInput(nameof(CustomPostProcessingEffects.BrightFilter), x => x.BrightFilter, (x, v) =>
+                    //{
+                    //    var s = x.BrightFilter;
+                    //    if (v != null)
+                    //    {
+                    //        s.Enabled = v.Enabled;
+                    //        s.Threshold = v.Threshold;
+                    //        s.Steepness = v.Steepness;
+                    //        s.Color = v.Color;
+                    //    }
+                    //    else
+                    //    {
+                    //        // Keep the bright filter enabled. Needed by Bloom, LightStreak and LensFlare. 
+                    //        // Stride will only use it if one of those is enabled.
+                    //        s.Enabled = true;
+                    //    }
+                    //}, defaultValue: null /* null is used to disable */)
+                    .AddInput(nameof(CustomPostProcessingEffects.BloomSettings), x => x.BloomSettings, (x, v) => x.BloomSettings = v, defaultValue: default)
+                    .AddInput(nameof(CustomPostProcessingEffects.ExposureSettings), x => x.ExposureSettings, (x, v) => x.ExposureSettings = v, defaultValue: default)
+                    .AddInput(nameof(CustomPostProcessingEffects.DebugHistogram), x => x.DebugHistogram, (x, v) => x.DebugHistogram = v, defaultValue: false)
+                    //.AddCachedInput(nameof(CustomPostProcessingEffects.LightStreak), x => x.LightStreak, (x, v) =>
+                    //{
+                    //    var s = x.LightStreak;
+                    //    if (v != null)
+                    //    {
+                    //        s.Enabled = v.Enabled;
+                    //        s.Amount = v.Amount;
+                    //        s.StreakCount = v.StreakCount;
+                    //        s.Attenuation = v.Attenuation;
+                    //        s.Phase = v.Phase;
+                    //        s.ColorAberrationStrength = v.ColorAberrationStrength;
+                    //        s.IsAnamorphic = v.IsAnamorphic;
+                    //    }
+                    //    else
+                    //    {
+                    //        s.Enabled = false;
+                    //    }
+                    //}, defaultValue: null /* null is used to disable */)
+                    //.AddCachedInput(nameof(CustomPostProcessingEffects.LensFlare), x => x.LensFlare, (x, v) =>
+                    //{
+                    //    var s = x.LensFlare;
+                    //    if (v != null)
+                    //    {
+                    //        s.Enabled = v.Enabled;
+                    //        s.Amount = v.Amount;
+                    //        s.ColorAberrationStrength = v.ColorAberrationStrength;
+                    //        s.HaloFactor = v.HaloFactor;
+                    //    }
+                    //    else
+                    //    {
+                    //        s.Enabled = false;
+                    //    }
+                    //}, defaultValue: null /* null is used to disable */)
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.Antialiasing), x => x.Antialiasing, (x, v) => x.Antialiasing = v)
+                    .AddInput(nameof(CustomPostProcessingEffects.Enabled), x => x.Enabled, (x, v) => x.Enabled = v);
         }
 
         internal static CustomNodeDesc<TRenderer> NewGraphicsRendererNode<TRenderer>(this IVLNodeDescriptionFactory factory, string category, string name = null, bool copyOnWrite = false)

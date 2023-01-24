@@ -225,16 +225,16 @@ namespace VL.Stride.Rendering
                 .AddCachedInput(nameof(Models.RoundRectangleMesh.Clockwise), x => x.Clockwise, (x, v) => x.Clockwise = v, false, null, null, false)
                 .AddDefaultPins();
 
-            /* Leaving out for first iteration of this PR
             yield return factory.NewMeshNode((Models.TubeMesh x) => (x.Path, x.Closed, x.Shape, x.Capped, x.SharedVertices, x.Clockwise), category: "Stride.Models.Meshes.Experimental")
                 .AddCachedInput(nameof(Models.TubeMesh.Path), x => x.Path, (x, v) => x.Path = v)
-                .AddCachedInput(nameof(Models.TubeMesh.Closed), x => x.Closed, (x, v) => x.Closed = v,false)
                 .AddCachedInput(nameof(Models.TubeMesh.Shape), x => x.Shape, (x, v) => x.Shape = v)
+                .AddCachedInput(nameof(Models.TubeMesh.Closed), x => x.Closed, (x, v) => x.Closed = v,false)
                 .AddCachedInput(nameof(Models.TubeMesh.Capped), x => x.Capped, (x, v) => x.Capped = v, true)
                 .AddCachedInput(nameof(Models.TubeMesh.SharedVertices), x => x.SharedVertices, (x, v) => x.SharedVertices = v, false)
                 .AddCachedInput(nameof(Models.TubeMesh.Clockwise), x => x.Clockwise, (x, v) => x.Clockwise = v, false, null, null, false)
                 .AddDefaultPins();
-            
+            // Leaving out for first iteration of this PR
+            /*
             yield return factory.NewMeshNode((Models.VerticalGeneralizedCylinderMesh x) => (x.Capped, x.Sections, x.Tessellation, x.Anchor, x.SharedVertices, x.Clockwise), category: "Stride.Models.Meshes.Experimental")
                 .AddCachedInput(nameof(Models.VerticalGeneralizedCylinderMesh.Capped), x => x.Capped, (x, v) => x.Capped = v, true)
                 .AddCachedInput(nameof(Models.VerticalGeneralizedCylinderMesh.Sections), x => x.Sections, (x, v) => x.Sections = v)

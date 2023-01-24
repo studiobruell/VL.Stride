@@ -95,7 +95,7 @@ namespace VL.Stride.Rendering.Lights
                 .AddCachedInput(nameof(IColorLight.Color), x => new Color4(x.Color.ComputeColor()), (x, v) => ((ColorRgbProvider)x.Color).Value = v.ToColor3(), Color4.White);
         }
 
-        static CustomNodeDesc<TLight> NewDirectLightNode<TLight>(IVLNodeDescriptionFactory factory, string category)
+        internal static CustomNodeDesc<TLight> NewDirectLightNode<TLight>(IVLNodeDescriptionFactory factory, string category)
             where TLight : class, IColorLight, IDirectLight, new()
         {
             return NewColorLightNode<TLight>(factory, category)

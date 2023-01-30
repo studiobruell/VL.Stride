@@ -2,6 +2,7 @@ using Stride.Core.Diagnostics;
 using Stride.Engine;
 using Stride.Engine.Design;
 using Stride.Games;
+using Stride.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +20,7 @@ namespace VL.Stride.Games
 
         internal readonly SchedulerSystem SchedulerSystem;
         private NodeFactoryRegistry NodeFactoryRegistry;
+        public bool CaptureFrame { get; set; }
 
         public VLGame()
             : base()
@@ -151,6 +153,27 @@ namespace VL.Stride.Games
             base.Update(gameTime);
         }
 
+        protected override bool BeginDraw()
+        {
+            if (CaptureFrame)
+            {
+                var renderDocManager = Services.GetService<RenderDocManager>();
+                if (renderDocManager == null || !renderDocManager.IsInitialized)
+                {
+                    renderDocManager = new RenderDocManager();
+
+                    if (!renderDocManager.IsInitialized)
+                        renderDocManager.Initialize();
+
+                    if (renderDocManager.IsInitialized)
+                        Services.AddService(renderDocManager);
+                }
+
+                renderDocManager?.StartFrameCapture(GraphicsDevice, IntPtr.Zero);
+            }
+            return base.BeginDraw();
+        }
+
         protected override void EndDraw(bool present)
         {
             try
@@ -163,6 +186,11 @@ namespace VL.Stride.Games
             finally
             {
                 PendingPresentCalls.Clear();
+                if (CaptureFrame)
+                {
+                    CaptureFrame = false;
+                    Services.GetService<RenderDocManager>()?.EndFrameCapture(GraphicsDevice, IntPtr.Zero);
+                }
             }
         }
 

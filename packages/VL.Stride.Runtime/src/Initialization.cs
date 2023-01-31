@@ -28,6 +28,27 @@ using ServiceRegistry = global::Stride.Core.ServiceRegistry;
 
 namespace VL.Stride.Core
 {
+    public static class RenderDocConnector
+    {
+        public static RenderDocManager RenderDocManager;
+        // The static ctor runs before the module initializer
+
+        [ModuleInitializer] //needs to be called before any Skia code is called by the vvvv UI
+        public static void Initialize()
+        {
+            if (Array.Exists(Environment.GetCommandLineArgs(), argument => argument == "--debug-gpu"))
+            {
+                var renderDocManager = new RenderDocManager();
+
+                if (!renderDocManager.IsInitialized)
+                    renderDocManager.Initialize();
+
+                if (renderDocManager.IsInitialized)
+                    RenderDocManager = renderDocManager;
+            }
+        }
+    }
+
     public sealed class Initialization : AssemblyInitializer<Initialization>
     {
         protected override void RegisterServices(IVLFactory factory)

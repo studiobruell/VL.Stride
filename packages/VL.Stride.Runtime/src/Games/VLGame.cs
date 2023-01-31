@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using VL.Core;
+using VL.Stride.Core;
 using VL.Stride.Engine;
 using VL.Stride.Rendering;
 
@@ -21,6 +22,7 @@ namespace VL.Stride.Games
         internal readonly SchedulerSystem SchedulerSystem;
         private NodeFactoryRegistry NodeFactoryRegistry;
         public bool CaptureFrame { get; set; }
+        private bool captureInProgress;
 
         public VLGame()
             : base()
@@ -144,6 +146,13 @@ namespace VL.Stride.Games
 
         protected override void Update(GameTime gameTime)
         {
+            if (CaptureFrame)
+            {
+                CaptureFrame = false;
+                RenderDocConnector.RenderDocManager?.StartFrameCapture(GraphicsDevice, IntPtr.Zero);
+                captureInProgress = true;
+            }
+
             var nodeFactoryRegistry = Services.GetService<NodeFactoryRegistry>();
 
             // Ensure all the paths referenced by VL are visible to the effect system
@@ -151,27 +160,6 @@ namespace VL.Stride.Games
                 UpdateShaderPaths(nodeFactoryRegistry);
 
             base.Update(gameTime);
-        }
-
-        protected override bool BeginDraw()
-        {
-            if (CaptureFrame)
-            {
-                var renderDocManager = Services.GetService<RenderDocManager>();
-                if (renderDocManager == null || !renderDocManager.IsInitialized)
-                {
-                    renderDocManager = new RenderDocManager();
-
-                    if (!renderDocManager.IsInitialized)
-                        renderDocManager.Initialize();
-
-                    if (renderDocManager.IsInitialized)
-                        Services.AddService(renderDocManager);
-                }
-
-                renderDocManager?.StartFrameCapture(GraphicsDevice, IntPtr.Zero);
-            }
-            return base.BeginDraw();
         }
 
         protected override void EndDraw(bool present)
@@ -186,10 +174,10 @@ namespace VL.Stride.Games
             finally
             {
                 PendingPresentCalls.Clear();
-                if (CaptureFrame)
+                if (captureInProgress)
                 {
-                    CaptureFrame = false;
-                    Services.GetService<RenderDocManager>()?.EndFrameCapture(GraphicsDevice, IntPtr.Zero);
+                    captureInProgress = false;
+                    RenderDocConnector.RenderDocManager?.EndFrameCapture(GraphicsDevice, IntPtr.Zero);
                 }
             }
         }

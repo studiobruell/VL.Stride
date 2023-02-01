@@ -22,7 +22,7 @@ namespace VL.Stride.Rendering
         const string textureInputName = "Input";
         const string samplerInputName = "Sampler";
 
-        static IVLNodeDescription NewImageEffectShaderNode(this IVLNodeDescriptionFactory factory, NameAndVersion name, string shaderName, ShaderMetadata shaderMetadata, IObservable<object> changes, Func<bool> openEditor, IServiceRegistry serviceRegistry, GraphicsDevice graphicsDevice)
+        static IVLNodeDescription NewImageEffectShaderNode(this IVLNodeDescriptionFactory factory, NameAndVersion name, string shaderName, ShaderMetadata shaderMetadata, IObservable<object> changes, Func<string> getFilePath, IServiceRegistry serviceRegistry, GraphicsDevice graphicsDevice)
         {
             return factory.NewNodeDescription(
                 name: name,
@@ -128,12 +128,13 @@ namespace VL.Stride.Rendering
                         });
                     _inputs.Add(_enabledInput = new PinDescription<bool>("Enabled", defaultValue: true));
 
-                    return buildContext.NewNode(
+                    return buildContext.Node(
                         inputs: _inputs,
                         outputs: _outputs,
                         messages: _messages,
                         summary: shaderMetadata.Summary,
                         remarks: shaderMetadata.Remarks,
+                        filePath: getFilePath(),
                         newNode: nodeBuildContext =>
                         {
                             var gameHandle = ServiceRegistry.Current.GetGameHandle();
@@ -196,7 +197,7 @@ namespace VL.Stride.Rendering
                                     gameHandle.Dispose();
                                 });
                         },
-                        openEditor: openEditor
+                        openEditor: () => OpenEditor(getFilePath)
                     );
                 });
         }
@@ -267,12 +268,13 @@ namespace VL.Stride.Rendering
                     }
 
 
-                    return buildContext.NewNode(
+                    return buildContext.Node(
                         inputs: _inputs,
                         outputs: new[] { buildContext.Pin("Output", typeof(Texture)) },
                         messages: shaderDescription.Messages,
                         summary: shaderMetadata.Summary,
                         remarks: shaderMetadata.Remarks,
+                        filePath: shaderDescription.FilePath,
                         newNode: nodeBuildContext =>
                         {
                             var nodeContext = nodeBuildContext.NodeContext;

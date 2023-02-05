@@ -27191,6 +27191,7 @@
             <ControlPoint Id="Mql7wdXUaRULouesZSL31N" Bounds="641,305" />
             <ControlPoint Id="TY4dv6OZmS7M3rh4aH1Crr" Bounds="762,469" />
             <ControlPoint Id="OOsflcfqABvOwzGSsfvwIp" Bounds="660,336" />
+            <ControlPoint Id="DGEhjjtg50cQYWgHYahh3I" Bounds="673,356" />
           </Canvas>
           <Link Id="JKnUileeJ7FNJsu7KpPf94" Ids="G7SBfHwE22bMfljT0fnHrW,EEQ60u0n9ATNadblUovIX7" IsHidden="true" />
           <Link Id="ToLCItn5JyDMzpOHiAEnJu" Ids="RzkQ5YRhHQALLkSoQA085R,Hdw9ETxxng9OxCDbLeNcTB" IsHidden="true" />
@@ -27317,6 +27318,7 @@
               </p:TypeAnnotation>
             </Pin>
             <Pin Id="Hdw9ETxxng9OxCDbLeNcTB" Name="Output" Kind="OutputPin" Bounds="404,481" />
+            <Pin Id="OZ84Ry9nndML0LALG65cvt" Name="Shadow Map Size" Kind="InputPin" Bounds="673,353" Visibility="Optional" />
           </Patch>
           <Patch Id="UkMxFWNCe6HL971Gebuips" Name="SetPresentInterval">
             <Pin Id="F73QRULo264PTGgjY3CvU2" MergeId="658386" Name="Present Interval" Kind="InputPin" Summary="VSync" />
@@ -27356,6 +27358,8 @@
           <Patch Id="EbJF3Am1yvgOyj2yR5fvSB" Name="SetViewportSettings">
             <Pin Id="Ut3r0D0V6PILjCdh9KHx4Z" MergeId="484258" Name="Viewport Settings" Kind="InputPin" Visibility="Optional" />
           </Patch>
+          <Link Id="F9W47SsxIKJOaNuOIK0ld6" Ids="DGEhjjtg50cQYWgHYahh3I,H79mZNep6I6OXGhz3q9otm" />
+          <Link Id="QnXJ7W5psgUOePiDLO2kJv" Ids="OZ84Ry9nndML0LALG65cvt,DGEhjjtg50cQYWgHYahh3I" IsHidden="true" />
         </Patch>
       </Node>
       <!--

@@ -8,7 +8,7 @@
     <Year>$([System.DateTime]::Now.ToString('yyyy'))</Year>
 
     <!-- The VL version to use -->
-    <VLVersion>2022.5.0-0536-gb07a1658b7</VLVersion>
+    <VLVersion>2022.5.0-0573-g50e6e701c2</VLVersion>
     
     <!-- The build ID on teamcity.vvvv.org for automatic download in case the specified version is not installed yet -->
     <VLBuildId>36908</VLBuildId>

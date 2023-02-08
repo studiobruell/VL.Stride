@@ -1455,6 +1455,13 @@
     <Compile Update="Effects\Utils\CalcDispatchArgs_ComputeFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Effects\Utils\ConstantColorBillboardTextured_DrawFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstantColorBillboardTextured_DrawFX.sdsl</DependentUpon>
+    </Compile>
+    <Compile Update="Effects\Utils\ConstantColorBillboard_DrawFX.sdsl.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Effects\Utils\ConstantColorTextured_DrawFX.sdsl.cs">
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1569,6 +1576,12 @@
     </None>
     <None Update="Effects\TextureFX\Utils\Swizzle_Internal_TextureFX.sdsl">
       <LastGenOutput>Swizzle_Internal_TextureFX.sdsl.cs</LastGenOutput>
+    </None>
+    <None Update="Effects\Utils\ConstantColorBillboard_DrawFX.sdsl">
+      <LastGenOutput>%(Filename).sdsl.cs</LastGenOutput>
+    </None>
+    <None Update="Effects\Utils\ConstantColorBillboardTextured_DrawFX.sdsl">
+      <LastGenOutput>%(Filename).sdsl.cs</LastGenOutput>
     </None>
     <None Update="Effects\VLAtmosphereEffectMain.sdfx">
       <LastGenOutput>VLAtmosphereEffectMain.sdfx.cs</LastGenOutput>

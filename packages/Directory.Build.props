@@ -8,7 +8,7 @@
     <Year>$([System.DateTime]::Now.ToString('yyyy'))</Year>
 
     <!-- The VL version to use -->
-    <VLVersion>2022.5.0-0574-ga3c26ef93e</VLVersion>
+    <VLVersion>2022.5.0-0588-gd1fc2ab3af</VLVersion>
     
     <!-- The build ID on teamcity.vvvv.org for automatic download in case the specified version is not installed yet -->
     <VLBuildId>36908</VLBuildId>
@@ -20,8 +20,8 @@
     <StrideVersion Condition="'$(StrideVersion)' == ''">4.1.0.1734</StrideVersion>
 
     <!-- The path to vvvv gamma - used as startup argument as well as the output path for the stride asset compiler -->
-    <VVVV_BinPath>$(MsBuildThisFileDirectory)..\..\..\vvvv-binaries\vvvv_gamma\</VVVV_BinPath>
-    <VVVVExePath>$(MsBuildThisFileDirectory)..\..\..\vvvv-binaries\vvvv_gamma\vvvv.exe</VVVVExePath>
+    <VVVV_BinPath>$(MsBuildThisFileDirectory)..\..\..\vvvv\vvvv_gamma\</VVVV_BinPath>
+    <VVVVExePath>$(MsBuildThisFileDirectory)..\..\..\vvvv\vvvv_gamma\vvvv.exe</VVVVExePath>
 
     <!-- The package repositories passed to the test game as well as the vvvv.exe used by VL.Stride -->
       <PackageRepositories>$(MsBuildThisFileDirectory)</PackageRepositories>

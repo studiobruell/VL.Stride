@@ -534,43 +534,43 @@ namespace VL.Stride.Rendering.Compositing
                         effects.Fog.Enabled = false;
                         //effects.Outline.Enabled = false;
                         //effects.AmbientOcclusion.Enabled = false;
-                        //effects.LocalReflections.Enabled = false;
+                        effects.LocalReflections.Enabled = false;
                         effects.DepthOfField.Enabled = false;
                         //effects.BrightFilter.Enabled = false;
                         //effects.BloomSettings.Enabled = false;
-                        //effects.LightStreak.Enabled = false;
-                        //effects.LensFlare.Enabled = false;
+                        effects.LightStreak.Enabled = false;
+                        effects.LensFlare.Enabled = false;
                         // ColorTransforms delegates to an empty list, keep it enabled
-                        //effects.ColorTransforms.Enabled = true;
+                        effects.ColorTransforms.Enabled = true;
                         effects.Antialiasing.Enabled = false;
                     })
                     .AddCachedInput(nameof(CustomPostProcessingEffects.AmbientOcclusion), x => x.AmbientOcclusion, (x, v) => x.AmbientOcclusion = v, defaultValue: null /* null is used to disable */)
-                    //.AddCachedInput(nameof(CustomPostProcessingEffects.LocalReflections), x => x.LocalReflections, (x, v) =>
-                    //{
-                    //    var s = x.LocalReflections;
-                    //    if (v != null)
-                    //    {
-                    //        s.Enabled = v.Enabled;
-                    //        s.DepthResolution = v.DepthResolution;
-                    //        s.RayTracePassResolution = v.RayTracePassResolution;
-                    //        s.MaxSteps = v.MaxSteps;
-                    //        s.BRDFBias = v.BRDFBias;
-                    //        s.GlossinessThreshold = v.GlossinessThreshold;
-                    //        s.WorldAntiSelfOcclusionBias = v.WorldAntiSelfOcclusionBias;
-                    //        s.ResolvePassResolution = v.ResolvePassResolution;
-                    //        s.ResolveSamples = v.ResolveSamples;
-                    //        s.ReduceHighlights = v.ReduceHighlights;
-                    //        s.EdgeFadeFactor = v.EdgeFadeFactor;
-                    //        s.UseColorBufferMips = v.UseColorBufferMips;
-                    //        s.TemporalEffect = v.TemporalEffect;
-                    //        s.TemporalScale = v.TemporalScale;
-                    //        s.TemporalResponse = v.TemporalResponse;
-                    //    }
-                    //    else
-                    //    {
-                    //        s.Enabled = false;
-                    //    }
-                    //}, defaultValue: null /* null is used to disable */)
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.LocalReflections), x => x.LocalReflections, (x, v) =>
+                    {
+                        var s = x.LocalReflections;
+                        if (v != null)
+                        {
+                            s.Enabled = v.Enabled;
+                            s.DepthResolution = v.DepthResolution;
+                            s.RayTracePassResolution = v.RayTracePassResolution;
+                            s.MaxSteps = v.MaxSteps;
+                            s.BRDFBias = v.BRDFBias;
+                            s.GlossinessThreshold = v.GlossinessThreshold;
+                            s.WorldAntiSelfOcclusionBias = v.WorldAntiSelfOcclusionBias;
+                            s.ResolvePassResolution = v.ResolvePassResolution;
+                            s.ResolveSamples = v.ResolveSamples;
+                            s.ReduceHighlights = v.ReduceHighlights;
+                            s.EdgeFadeFactor = v.EdgeFadeFactor;
+                            s.UseColorBufferMips = v.UseColorBufferMips;
+                            s.TemporalEffect = v.TemporalEffect;
+                            s.TemporalScale = v.TemporalScale;
+                            s.TemporalResponse = v.TemporalResponse;
+                        }
+                        else
+                        {
+                            s.Enabled = false;
+                        }
+                    }, defaultValue: null /* null is used to disable */)
                     .AddCachedInput(nameof(CustomPostProcessingEffects.DepthOfField), x => x.DepthOfField, (x, v) =>
                     {
                         var s = x.DepthOfField;
@@ -634,44 +634,46 @@ namespace VL.Stride.Rendering.Compositing
                     //        s.Enabled = true;
                     //    }
                     //}, defaultValue: null /* null is used to disable */)
-                    .AddInput(nameof(CustomPostProcessingEffects.BloomSettings), x => x.BloomSettings, (x, v) => x.BloomSettings = v, defaultValue: default)
-                    .AddInput(nameof(CustomPostProcessingEffects.ExposureSettings), x => x.ExposureSettings, (x, v) => x.ExposureSettings = v, defaultValue: default)
-                    .AddInput(nameof(CustomPostProcessingEffects.DebugHistogram), x => x.DebugHistogram, (x, v) => x.DebugHistogram = v, defaultValue: false)
-                    //.AddCachedInput(nameof(CustomPostProcessingEffects.LightStreak), x => x.LightStreak, (x, v) =>
-                    //{
-                    //    var s = x.LightStreak;
-                    //    if (v != null)
-                    //    {
-                    //        s.Enabled = v.Enabled;
-                    //        s.Amount = v.Amount;
-                    //        s.StreakCount = v.StreakCount;
-                    //        s.Attenuation = v.Attenuation;
-                    //        s.Phase = v.Phase;
-                    //        s.ColorAberrationStrength = v.ColorAberrationStrength;
-                    //        s.IsAnamorphic = v.IsAnamorphic;
-                    //    }
-                    //    else
-                    //    {
-                    //        s.Enabled = false;
-                    //    }
-                    //}, defaultValue: null /* null is used to disable */)
-                    //.AddCachedInput(nameof(CustomPostProcessingEffects.LensFlare), x => x.LensFlare, (x, v) =>
-                    //{
-                    //    var s = x.LensFlare;
-                    //    if (v != null)
-                    //    {
-                    //        s.Enabled = v.Enabled;
-                    //        s.Amount = v.Amount;
-                    //        s.ColorAberrationStrength = v.ColorAberrationStrength;
-                    //        s.HaloFactor = v.HaloFactor;
-                    //    }
-                    //    else
-                    //    {
-                    //        s.Enabled = false;
-                    //    }
-                    //}, defaultValue: null /* null is used to disable */)
+                    .AddInput(nameof(CustomPostProcessingEffects.BloomSettings), x => x.BloomSettings, (x, v) => x.BloomSettings = v, defaultValue: new BloomSettings())
+                    .AddInput(nameof(CustomPostProcessingEffects.ExposureSettings), x => x.ExposureSettings, (x, v) => x.ExposureSettings = v, defaultValue: new ExposureSettings())
+                    //.AddInput(nameof(CustomPostProcessingEffects.DebugHistogram), x => x.DebugHistogram, (x, v) => x.DebugHistogram = v, defaultValue: false)
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.LightStreak), x => x.LightStreak, (x, v) =>
+                    {
+                        var s = x.LightStreak;
+                        if (v != null)
+                        {
+                            s.Enabled = v.Enabled;
+                            s.Amount = v.Amount;
+                            s.StreakCount = v.StreakCount;
+                            s.Attenuation = v.Attenuation;
+                            s.Phase = v.Phase;
+                            s.ColorAberrationStrength = v.ColorAberrationStrength;
+                            s.IsAnamorphic = v.IsAnamorphic;
+                        }
+                        else
+                        {
+                            s.Enabled = false;
+                        }
+                    }, defaultValue: null /* null is used to disable */)
+                    .AddCachedInput(nameof(CustomPostProcessingEffects.LensFlare), x => x.LensFlare, (x, v) =>
+                    {
+                        var s = x.LensFlare;
+                        if (v != null)
+                        {
+                            s.Enabled = v.Enabled;
+                            s.Amount = v.Amount;
+                            s.ColorAberrationStrength = v.ColorAberrationStrength;
+                            s.HaloFactor = v.HaloFactor;
+                        }
+                        else
+                        {
+                            s.Enabled = false;
+                        }
+                    }, defaultValue: null /* null is used to disable */)
+                    .AddCachedListInput(nameof(PostProcessingEffects.ColorTransforms), x => x.ColorTransforms.Transforms)
                     .AddCachedInput(nameof(CustomPostProcessingEffects.Antialiasing), x => x.Antialiasing, (x, v) => x.Antialiasing = v)
-                    .AddInput(nameof(CustomPostProcessingEffects.Enabled), x => x.Enabled, (x, v) => x.Enabled = v);
+                    .AddInput(nameof(CustomPostProcessingEffects.Enabled), x => x.Enabled, (x, v) => x.Enabled = v)
+                    .AddOutput(nameof(CustomPostProcessingEffects.LastException), x => x.LastException);
         }
 
         internal static CustomNodeDesc<TRenderer> NewGraphicsRendererNode<TRenderer>(this IVLNodeDescriptionFactory factory, string category, string name = null, bool copyOnWrite = false)

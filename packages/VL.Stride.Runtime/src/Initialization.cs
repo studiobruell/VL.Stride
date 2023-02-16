@@ -28,6 +28,27 @@ using ServiceRegistry = global::Stride.Core.ServiceRegistry;
 
 namespace VL.Stride.Core
 {
+    public static class RenderDocConnector
+    {
+        public static RenderDocManager RenderDocManager;
+        // The static ctor runs before the module initializer
+
+        [ModuleInitializer] //needs to be called before any Skia code is called by the vvvv UI
+        public static void Initialize()
+        {
+            if (Array.Exists(Environment.GetCommandLineArgs(), argument => argument == "--debug-gpu"))
+            {
+                var renderDocManager = new RenderDocManager();
+
+                if (!renderDocManager.IsInitialized)
+                    renderDocManager.Initialize();
+
+                if (renderDocManager.IsInitialized)
+                    RenderDocManager = renderDocManager;
+            }
+        }
+    }
+
     public sealed class Initialization : AssemblyInitializer<Initialization>
     {
         protected override void RegisterServices(IVLFactory factory)
@@ -87,10 +108,17 @@ namespace VL.Stride.Core
         {
             lock (serviceCache)
             {
-                // Keep Stride services per root container (which is usually the session)
-                var root = factory.GetService<CompositeDisposable>();
-                var strideServices = serviceCache.GetValue(root, CreateStrideServices);
+                var strideServices = GetGlobalStrideServices();
                 factory.RegisterNodeFactory(NodeBuilding.NewNodeFactory(factory, name, f => init(strideServices, f)));
+            }
+        }
+
+        public static ServiceRegistry GetGlobalStrideServices()
+        {
+            lock (serviceCache)
+            {
+                var root = VL.Core.ServiceRegistry.CurrentOrGlobal.GetService<CompositeDisposable>();
+                return serviceCache.GetValue(root, CreateStrideServices);
             }
         }
 

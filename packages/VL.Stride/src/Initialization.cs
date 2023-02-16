@@ -37,9 +37,10 @@ namespace VL.Stride.Lib
                 return ResourceProvider.New(() =>
                 {
                     var game = new VLGame();
-#if DEBUG
-                    game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
-#endif
+
+                    if (Array.Exists(Environment.GetCommandLineArgs(), argument => argument == "--debug-gpu"))
+                        game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
+
                     // for now we don't let the user decide upon the colorspace
                     // as we'd need to either recreate all textures and swapchains in that moment or make sure that these weren't created yet.
                     game.GraphicsDeviceManager.PreferredColorSpace = ColorSpace.Linear;
@@ -64,6 +65,8 @@ namespace VL.Stride.Lib
                         // SDL_PumpEvents shall not run the message loop (Translate/Dispatch) - already done by windows forms
                         // This calls also needs to be done after the Stride loaded the native SDL library - otherwise crash
                         Sdl.GetApi().SetHint(Sdl.HintWindowsEnableMessageloop, "0");
+                        // Stride sets this flag (doesn't say why). Let's reset it as it is quite common for our render windows to not have focus.
+                        Sdl.GetApi().SetHint(Sdl.HintMouseFocusClickthrough, "0");
                         // Add a message filter which intercepts WM_CHAR messages the Windows Forms loop would otherwise drop because it doesn't know the SDL created windows.
                         Application.AddMessageFilter(messageFilter = new MessageFilter());
                     }
@@ -116,6 +119,7 @@ namespace VL.Stride.Lib
                         Application.RemoveMessageFilter(messageFilter);
 
                     clockSubscription?.Dispose();
+                    game.Services.GetService<RenderDocManager>()?.RemoveHooks();
                 })
                 .ShareInParallel();
             });
@@ -129,7 +133,7 @@ namespace VL.Stride.Lib
                 return ResourceProvider.Return(game.Window, disposeAction: (window) =>
                 {
                     window.Visible = false;
-                }).ShareInParallel();
+                });
             });
         }
 

@@ -8,10 +8,10 @@
     <Year>$([System.DateTime]::Now.ToString('yyyy'))</Year>
 
     <!-- The VL version to use -->
-    <VLVersion>2022.5.0-0275-g439b5d2395</VLVersion>
+    <VLVersion>2022.5.0-0574-ga3c26ef93e</VLVersion>
     
     <!-- The build ID on teamcity.vvvv.org for automatic download in case the specified version is not installed yet -->
-    <VLBuildId>36368</VLBuildId>
+    <VLBuildId>36908</VLBuildId>
     
     <!-- The download URL of above vvvv/VL version -->
     <VLZipUrl>https://teamcity.vvvv.org/guestAuth/app/rest/builds/id:$(VLBuildId)/artifacts/content/vvvv_gamma_$(VLVersion).zip</VLZipUrl>
@@ -20,17 +20,19 @@
     <StrideVersion Condition="'$(StrideVersion)' == ''">4.1.0.1734</StrideVersion>
 
     <!-- The path to vvvv gamma - used as startup argument as well as the output path for the stride asset compiler -->
-    <VVVV_BinPath>$(MsBuildThisFileDirectory)..\..\..\vvvv\vvvv_gamma\</VVVV_BinPath>
-    <!--<VVVVExePath>$(MsBuildThisFileDirectory)..\..\..\vvvv\vvvv_gamma\vvvv.exe</VVVVExePath>-->
+    <VVVV_BinPath>$(MsBuildThisFileDirectory)..\..\..\vvvv-binaries\vvvv_gamma\</VVVV_BinPath>
+    <VVVVExePath>$(MsBuildThisFileDirectory)..\..\..\vvvv-binaries\vvvv_gamma\vvvv.exe</VVVVExePath>
 
     <!-- The package repositories passed to the test game as well as the vvvv.exe used by VL.Stride -->
-    <PackageRepositories>$(MsBuildThisFileDirectory)</PackageRepositories>
+      <PackageRepositories>$(MsBuildThisFileDirectory)</PackageRepositories>
+      <PackageRepositories2>$(MsBuildThisFileDirectory)..\..\..\Spacemusic\</PackageRepositories2>
 
     <!-- Let's not make the output folder too deep -->
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 
     <!-- Enable central package version feature https://devblogs.microsoft.com/nuget/introducing-central-package-management/ -->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
     
     <!-- Package properties -->
     <EmitNuSpec>true</EmitNuSpec>

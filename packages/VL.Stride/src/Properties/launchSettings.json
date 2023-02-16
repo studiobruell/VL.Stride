@@ -3,7 +3,16 @@
     "VL.Stride": {
       "commandName": "Executable",
       "executablePath": "$(VVVVExePath)",
-      "commandLineArgs": "--package-repositories $(PackageRepositories) --export-package-sources $(PackageOutputPath)",
+      "commandLineArgs": "--package-repositories $(PackageRepositories) --export-package-sources $(PackageOutputPath) --debug-gpu",
+      "workingDirectory": "$(WorkingDirectory)",
+      "environmentVariables": {
+        "PATH": "$(NativeLibraryPath)"
+      }
+    },
+    "SpaceMusic": {
+      "commandName": "Executable",
+      "executablePath": "$(VVVVExePath)",
+      "commandLineArgs": "--package-repositories $(PackageRepositories);$(PackageRepositories2) --export-package-sources $(PackageOutputPath) --debug-gpu",
       "workingDirectory": "$(WorkingDirectory)",
       "environmentVariables": {
         "PATH": "$(NativeLibraryPath)"

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Stride.Core;
 using Stride.Core.Collections;
 using Stride.Core.Diagnostics;

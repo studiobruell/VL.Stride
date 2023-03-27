@@ -2,10 +2,12 @@ using Stride.Core.Diagnostics;
 using Stride.Engine;
 using Stride.Engine.Design;
 using Stride.Games;
+using Stride.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using VL.Core;
+using VL.Stride.Core;
 using VL.Stride.Engine;
 using VL.Stride.Rendering;
 
@@ -19,6 +21,8 @@ namespace VL.Stride.Games
 
         internal readonly SchedulerSystem SchedulerSystem;
         private NodeFactoryRegistry NodeFactoryRegistry;
+        public bool CaptureFrame { get; set; }
+        private bool captureInProgress;
 
         public VLGame()
             : base()
@@ -142,6 +146,13 @@ namespace VL.Stride.Games
 
         protected override void Update(GameTime gameTime)
         {
+            if (CaptureFrame)
+            {
+                CaptureFrame = false;
+                RenderDocConnector.RenderDocManager?.StartFrameCapture(GraphicsDevice, IntPtr.Zero);
+                captureInProgress = true;
+            }
+
             var nodeFactoryRegistry = Services.GetService<NodeFactoryRegistry>();
 
             // Ensure all the paths referenced by VL are visible to the effect system
@@ -163,6 +174,11 @@ namespace VL.Stride.Games
             finally
             {
                 PendingPresentCalls.Clear();
+                if (captureInProgress)
+                {
+                    captureInProgress = false;
+                    RenderDocConnector.RenderDocManager?.EndFrameCapture(GraphicsDevice, IntPtr.Zero);
+                }
             }
         }
 

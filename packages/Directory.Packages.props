@@ -15,6 +15,9 @@
     <PackageVersion Include="Stride.Core.Mathematics" Version="$(StrideVersion)" />
     <PackageVersion Include="Stride.Core.Yaml" Version="$(StrideVersion)" />
     <PackageVersion Include="Stride.Engine" Version="$(StrideVersion)" />
+    <PackageVersion Include="Stride.Graphics.RenderDocPlugin">
+      <Version>4.1.0.1734</Version>
+    </PackageVersion>
     <PackageVersion Include="Stride.Navigation" Version="$(StrideVersion)" />
     <PackageVersion Include="Stride.Particles" Version="$(StrideVersion)" />
     <PackageVersion Include="Stride.Physics" Version="$(StrideVersion)" />

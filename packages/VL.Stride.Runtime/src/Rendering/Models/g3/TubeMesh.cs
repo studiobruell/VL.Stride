@@ -54,7 +54,6 @@ namespace VL.Stride.Rendering.Models
             {
                 var path = new DCurve3(Utils.ToVector3dList(Path), Closed);
                 var tubeShape = new Polygon2d(Utils.ToVector2dList(Shape));
-
                 var generator = new TubeGenerator(path, tubeShape)
                 {
                     Capped = Capped,

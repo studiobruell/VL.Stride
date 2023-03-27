@@ -2,8 +2,17 @@
   "profiles": {
     "VL.Stride": {
       "commandName": "Executable",
-      "executablePath": "$(VVVV_BinPath)vvvv.exe",
-      "commandLineArgs": "--package-repositories $(PackageRepositories) --export-package-sources $(PackageOutputPath)",
+      "executablePath": "$(VVVVExePath)",
+      "commandLineArgs": "--package-repositories $(PackageRepositories) --export-package-sources $(PackageOutputPath) --debug-gpu",
+      "workingDirectory": "$(WorkingDirectory)",
+      "environmentVariables": {
+        "PATH": "$(NativeLibraryPath)"
+      }
+    },
+    "SpaceMusic": {
+      "commandName": "Executable",
+      "executablePath": "$(VVVVExePath)",
+      "commandLineArgs": "--package-repositories $(PackageRepositories);$(PackageRepositories2) --export-package-sources $(PackageOutputPath) --debug-gpu",
       "workingDirectory": "$(WorkingDirectory)",
       "environmentVariables": {
         "PATH": "$(NativeLibraryPath)"

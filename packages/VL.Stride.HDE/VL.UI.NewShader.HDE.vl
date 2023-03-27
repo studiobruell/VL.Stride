@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" Id="ClTpToiPLZjP46eZzoMtzH" LanguageVersion="2022.5.0-0586-gc90dffb860" Version="0.128">
-  <NugetDependency Id="OL9hP65cAbHMpfTbo9KnAl" Location="VL.CoreLib" Version="2022.5.0-0466-g43f831a33a" />
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" Id="ClTpToiPLZjP46eZzoMtzH" LanguageVersion="2022.5.0-0588-gd1fc2ab3af" Version="0.128">
+  <NugetDependency Id="OL9hP65cAbHMpfTbo9KnAl" Location="VL.CoreLib" Version="2022.5.0-0588-gd1fc2ab3af" />
   <Patch Id="LDMkIeZ47NoOdzmDTrn8vR">
     <Canvas Id="TB1ZqAEXZvAMjUbCD9wchk" DefaultCategory="NewShader" CanvasType="FullCategory">
       <!--
@@ -4124,11 +4124,11 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="DQDBQeEoCSoPrDTM8TSex7" Location="VL.Skia" Version="2022.5.0-0466-g43f831a33a" />
-  <NugetDependency Id="FujcSG8q1d8PmHbhRci561" Location="VL.HDE" Version="2022.5.0-0466-g43f831a33a" />
-  <NugetDependency Id="N1rNAlKlHLuP1oV5Z0uHNX" Location="VL.ImGui.Skia" Version="2022.5.0-0466-g43f831a33a" />
-  <NugetDependency Id="ODWgaNHBVsEQBBi2Bu3zV0" Location="VL.CoreLib.Windows" Version="2022.5.0-0466-g43f831a33a" />
-  <NugetDependency Id="PwkRWeFOo8EQdqydhXqgnO" Location="VL.UI.Core" Version="2022.5.0-0466-g43f831a33a" />
+  <NugetDependency Id="DQDBQeEoCSoPrDTM8TSex7" Location="VL.Skia" Version="2022.5.0-0588-gd1fc2ab3af" />
+  <NugetDependency Id="FujcSG8q1d8PmHbhRci561" Location="VL.HDE" Version="2022.5.0-0588-gd1fc2ab3af" />
+  <NugetDependency Id="N1rNAlKlHLuP1oV5Z0uHNX" Location="VL.ImGui.Skia" Version="2022.5.0-0588-gd1fc2ab3af" />
+  <NugetDependency Id="ODWgaNHBVsEQBBi2Bu3zV0" Location="VL.CoreLib.Windows" Version="2022.5.0-0588-gd1fc2ab3af" />
+  <NugetDependency Id="PwkRWeFOo8EQdqydhXqgnO" Location="VL.UI.Core" Version="2022.5.0-0588-gd1fc2ab3af" />
   <PlatformDependency Id="K4qeFeaoR6fPVZlvjBtArU" Location="VL.Stride.Runtime.dll" />
   <DocumentDependency Id="AywdwLSfZv8P5M3W1Ln7dh" Location="./VL.UI.NewShader-Lib.vl" />
   <PlatformDependency Id="Ns5VvbjyZ3QMnbeyVPDyoz" Location="VL.Lang.dll" />

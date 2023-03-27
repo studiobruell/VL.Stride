@@ -16,6 +16,7 @@ namespace VL.Stride.Rendering.Models
         /// <param name="meshGenerator">A g3 SimpleMesh instance</param>
         /// <param name="name">The model name</param>
         /// <param name="UVScale">UV scale factor as a Vector2</param>
+        /// <param name="yOffset">Offse along the y axis</param>
         /// <returns>An equivalent Stride GeometricMeshData</returns>
         public static GeometricMeshData<VertexPositionNormalTexture> ToGeometricMeshData(MeshGenerator meshGenerator, string name, Vector2 UVScale, float yOffset = 0f)
         {

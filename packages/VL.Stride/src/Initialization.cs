@@ -37,9 +37,10 @@ namespace VL.Stride.Lib
                 return ResourceProvider.New(() =>
                 {
                     var game = new VLGame();
-#if DEBUG
-                    game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
-#endif
+
+                    if (Array.Exists(Environment.GetCommandLineArgs(), argument => argument == "--debug-gpu"))
+                        game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
+
                     // for now we don't let the user decide upon the colorspace
                     // as we'd need to either recreate all textures and swapchains in that moment or make sure that these weren't created yet.
                     game.GraphicsDeviceManager.PreferredColorSpace = ColorSpace.Linear;
@@ -118,6 +119,7 @@ namespace VL.Stride.Lib
                         Application.RemoveMessageFilter(messageFilter);
 
                     clockSubscription?.Dispose();
+                    game.Services.GetService<RenderDocManager>()?.RemoveHooks();
                 })
                 .ShareInParallel();
             });

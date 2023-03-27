@@ -127,6 +127,11 @@ namespace VL.Stride.Rendering
         public RenderStage TransparentRenderStage { get; set; }
 
         /// <summary>
+        /// The render stage after the MSAA resolver to draw into the resolved texture
+        /// </summary>
+        public RenderStage ResolvedRenderStage { get; set; }
+
+        /// <summary>
         /// The shadow map render stages for shadow casters. No shadow rendering will happen if null.
         /// </summary>
         [MemberCollection(NotNullItems = true)]
@@ -294,6 +299,11 @@ namespace VL.Stride.Rendering
                 TransparentRenderStage.OutputValidator.Validate(ref context.RenderOutput);
             }
 
+            if (ResolvedRenderStage != null)
+            {
+                ResolvedRenderStage.OutputValidator.Validate(ref context.RenderOutput);
+            }
+
             if (GBufferRenderStage != null && LightProbes)
             {
                 GBufferRenderStage.Output = new RenderOutputDescription(PixelFormat.None, context.RenderOutput.DepthStencilFormat);
@@ -343,6 +353,11 @@ namespace VL.Stride.Rendering
             if (TransparentRenderStage != null)
             {
                 context.RenderView.RenderStages.Add(TransparentRenderStage);
+            }
+
+            if (ResolvedRenderStage != null)
+            {
+                context.RenderView.RenderStages.Add(ResolvedRenderStage);
             }
 
             if (GBufferRenderStage != null && LightProbes)
@@ -690,6 +705,26 @@ namespace VL.Stride.Rendering
                     } 
                 }
 
+                // Draw [main view | resolved stage]
+                if (ResolvedRenderStage != null)
+                {
+                    // Some resolve shaders will require the depth as a shader resource - resolve it only once and set it here
+                    using (drawContext.QueryManager.BeginProfile(Color.Green, CompositingProfilingKeys.MsaaResolve))
+                    using (drawContext.PushRenderTargetsAndRestore())
+                    {
+                        if (depthStencilSRV == null)
+                            depthStencilSRV = ResolveDepthAsSRV(drawContext);
+
+                        //renderSystem.Draw(drawContext, context.RenderView, ResolvedRenderStage);
+
+                        drawContext.CommandList.SetRenderTargetsAndViewport(depthStencil, renderTargets.ToArray()); //TODO: Allocation
+
+                        //var renderTargetSRV = ResolveRenderTargetAsSRV(drawContext);
+                        renderSystem.Draw(drawContext, context.RenderView, ResolvedRenderStage);
+                        //Context.Allocator.ReleaseReference(renderTargetSRV);
+                    }
+                }
+
                 // Shafts if we have them
                 if (LightShafts != null)
                 {
@@ -1029,6 +1064,41 @@ namespace VL.Stride.Rendering
             context.CommandList.SetRenderTargets(depthStencilROCached, context.CommandList.RenderTargetCount, context.CommandList.RenderTargets);
 
             return depthStencilSRV;
+        }
+
+        private Texture ResolveRenderTargetAsSRV(RenderDrawContext drawContext)
+        {
+            //if (!BindOpaqueAsResourceDuringTransparentRendering)
+            //    return null;
+
+            // Create temporary texture and blit active render target to it
+            var renderTarget = drawContext.CommandList.RenderTargets[0];
+            var renderTargetTexture = Context.Allocator.GetTemporaryTexture2D(renderTarget.Description);
+
+            drawContext.CommandList.Copy(renderTarget, renderTargetTexture);
+
+            // Bind texture as srv in PerView.Opaque
+            var renderView = drawContext.RenderContext.RenderView;
+            foreach (var renderFeature in drawContext.RenderContext.RenderSystem.RenderFeatures)
+            {
+                if (!(renderFeature is RootEffectRenderFeature))
+                    continue;
+
+                var resolvedLogicalKey = ((RootEffectRenderFeature)renderFeature).CreateViewLogicalGroup("Resolved");
+                var viewFeature = renderView.Features[renderFeature.Index];
+
+                foreach (var viewLayout in viewFeature.Layouts)
+                {
+                    var opaqueLogicalRenderGroup = viewLayout.GetLogicalGroup(resolvedLogicalKey);
+                    if (opaqueLogicalRenderGroup.Hash == ObjectId.Empty)
+                        continue;
+
+                    var resourceGroup = viewLayout.Entries[renderView.Index].Resources;
+                    resourceGroup.DescriptorSet.SetShaderResourceView(opaqueLogicalRenderGroup.DescriptorSlotStart, renderTargetTexture);
+                }
+            }
+
+            return renderTargetTexture;
         }
 
         private void PrepareRenderTargets(RenderDrawContext drawContext, Texture outputRenderTarget, Texture outputDepthStencil)

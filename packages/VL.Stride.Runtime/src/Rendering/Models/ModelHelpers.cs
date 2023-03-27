@@ -1,5 +1,8 @@
 ﻿using System;
+using SharpFont;
 using Stride.Core.Mathematics;
+using Stride.Graphics;
+using Stride.Graphics.Data;
 using Stride.Rendering;
 using StrideModel = Stride.Rendering.Model;
 
@@ -65,6 +68,51 @@ namespace VL.Stride.Rendering
             // Finally, normalize all the sums to get a unit-length, area-weighted average.
             for (int vertex = 0; vertex < vertexPositions.Length; vertex++)
                 vertexNormals[vertex].Normalize();
+        }
+
+        public static void GenerateTangentsIndexed<TVertex>(TVertex[] vertices, int[] indices, int numberOfTextureCoordinates,
+            out byte[] vertexBuffer, out VertexDeclaration vertexLayout, out ushort[] indicesShort, out bool useIndicesShort) where TVertex : struct, IVertex
+        {
+            if (vertices?.Length == 0)
+            {
+                throw new InvalidOperationException("Expecting non-zero Vertices array");
+            }
+
+            if (indices?.Length == 0)
+            {
+                throw new InvalidOperationException("Expecting non-zero Indices array");
+            }
+
+            var originalLayout = vertices[0].GetLayout();
+
+            // Generate Tangent/BiNormal vectors
+            var result = VertexHelper.GenerateTangentBinormal(originalLayout, vertices, indices);
+
+            // Generate Multitexcoords
+            var maxTexCoords = MathUtil.Clamp(numberOfTextureCoordinates, 1, 10) - 1;
+
+            if (maxTexCoords > 0)
+                result = VertexHelper.GenerateMultiTextureCoordinates(result, vertexStride: 0, maxTexCoords);
+
+            var meshDraw = new MeshDraw();
+
+            vertexLayout = result.Layout;
+            vertexBuffer = result.VertexBuffer;
+
+            if (indices.Length < 0xFFFF)
+            {
+                indicesShort = new ushort[indices.Length];
+                for (int i = 0; i < indicesShort.Length; i++)
+                {
+                    indicesShort[i] = (ushort)indices[i];
+                }
+                useIndicesShort = true;
+            }
+            else
+            {
+                indicesShort = null;
+                useIndicesShort = false;
+            }
         }
     }
 }
